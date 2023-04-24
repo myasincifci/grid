@@ -39,21 +39,21 @@ def is_neighbour(pos: Tuple[int, int]):
 def add_cube():
     mouse_pos = round_mouse(pygame.mouse.get_pos())
 
-    if pygame.mouse.get_pressed()[0]:
-        if can_draw(mouse_pos) and is_neighbour(mouse_pos):
-            x, y = round_mouse(pygame.mouse.get_pos())
-            cubes[len(cubes)] = (x, y)
-            
-            print('##########')
-            for k, v in cubes.items():    
-                print(k, v)
-            print('##########')
+    if can_draw(mouse_pos) and is_neighbour(mouse_pos):
+        x, y = round_mouse(pygame.mouse.get_pos())
+        cubes[len(cubes)] = (x, y)
+        
+        print('##########')
+        for k, v in cubes.items():    
+            print(k, v)
+        print('##########')
 
 def draw_cubes():
     for _, v in cubes.items():
         rect = pygame.Rect(*v, 50, 50)
         pygame.draw.rect(screen, (255, 0, 0), rect, 3)
-            
+
+
 running = True
 while running:
     screen.fill(background_colour)
@@ -61,7 +61,10 @@ while running:
     mouse_rect = pygame.Rect(*round_mouse(pygame.mouse.get_pos()), 50, 50)
     pygame.draw.rect(screen, (100, 100, 100), mouse_rect, 3)
 
-    add_cube()
+    
+    if pygame.mouse.get_pressed()[0]:
+        add_cube()
+
     draw_cubes()
 
     pygame.display.update()
