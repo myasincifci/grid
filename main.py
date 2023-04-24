@@ -51,7 +51,7 @@ def add_cube():
 def draw_cubes():
     for _, v in cubes.items():
         rect = pygame.Rect(*v, 50, 50)
-        pygame.draw.rect(screen, (255, 0, 0), rect, 3)
+        pygame.draw.rect(screen, (255, 0, 0), rect)
 
 
 running = True
